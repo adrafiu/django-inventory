@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Product | Inventory Manager{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7 col-lg-6">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <h1 class="h4 text-danger mb-3">Delete Product</h1>
+
+                <p>
+                    Are you sure you want to delete
+                    <strong>{{ product.name }}</strong>?
+                </p>
+
+                <p class="text-muted">
+                    This action cannot be undone.
+                </p>
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    <button type="submit" class="btn btn-danger">
+                        Yes, Delete
+                    </button>
+
+                    <a
+                        href="{% url 'inventory:product_list' %}"
+                        class="btn btn-outline-secondary ms-2"
+                    >
+                        Cancel
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
